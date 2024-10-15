@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Palabras y Caracteres</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #e0f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .counter {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+    .counter h2 {
+      color: #00796b;
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #b2dfdb;
+      outline: none;
+      font-size: 16px;
+      resize: none;
+      transition: border-color 0.3s;
+    }
+    textarea:focus {
+      border-color: #00796b;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #004d40;
+    }
+    .result p {
+      margin: 5px 0;
+    }
+    /* Estilo adicional para hacerlo más atractivo */
+    .counter {
+      background-image: linear-gradient(45deg, #e0f7fa, #b2dfdb);
+      border: 2px solid #004d40;
+    }
+    textarea {
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .counter h2 {
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="counter">
+    <h2>Contador de Palabras y Caracteres</h2>
+    <textarea id="textInput" oninput="countText()" placeholder="Escribe o pega tu texto aquí..."></textarea>
+    <div class="result">
+      <p id="charCount">Caracteres: 0</p>
+      <p id="wordCount">Palabras: 0</p>
+    </div>
+  </div>
+
+  <script>
+    function countText() {
+      let text = document.getElementById('textInput').value;
+      
+      // Contar caracteres excluyendo espacios
+      let charCount = text.replace(/\s+/g, '').length;
+
+      // Contar palabras (una palabra se define como cualquier secuencia separada por espacios)
+      let wordCount = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+
+      // Actualizar los resultados en la página
+      document.getElementById('charCount').innerText = `Caracteres: ${charCount}`;
+      document.getElementById('wordCount').innerText = `Palabras: ${wordCount}`;
+    }
+  </script>
+
+</body>
+</html>
